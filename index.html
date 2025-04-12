@@ -1,487 +1,460 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<span class="Apple-converted-space">    </span><meta charset="UTF-8">
-<span class="Apple-converted-space">    </span><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<span class="Apple-converted-space">    </span><title>学术论文报告：迷走神经、沙门氏菌、焦虑与GABA</title>
-<span class="Apple-converted-space">    </span><script src="https://cdn.tailwindcss.com"></script>
-<span class="Apple-converted-space">    </span><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
-<span class="Apple-converted-space">    </span><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<span class="Apple-converted-space">    </span><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<span class="Apple-converted-space">    </span><style>
-<span class="Apple-converted-space">        </span>body {
-<span class="Apple-converted-space">            </span>font-family: 'Roboto', 'Noto Sans SC', sans-serif;
-<span class="Apple-converted-space">            </span>background-color: #f8fafc; /* Lighter gray background */
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>h1, h2, h3 {
-<span class="Apple-converted-space">            </span>font-family: 'Roboto', 'Noto Sans SC', sans-serif;
-<span class="Apple-converted-space">            </span>font-weight: 700;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>h2 {
-<span class="Apple-converted-space">            </span>border-bottom: 2px solid #3b82f6; /* Blue border */
-<span class="Apple-converted-space">            </span>padding-bottom: 0.5rem;
-<span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;
-<span class="Apple-converted-space">            </span>font-size: 1.5rem; /* Larger heading */
-<span class="Apple-converted-space">            </span>color: #1e3a8a; /* Darker blue */
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.card {
-<span class="Apple-converted-space">            </span>background-color: #ffffff;
-<span class="Apple-converted-space">            </span>border-radius: 0.75rem; /* More rounded corners */
-<span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-<span class="Apple-converted-space">            </span>padding: 1.5rem;
-<span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;
-<span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb; /* Subtle border */
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.list-item {
-<span class="Apple-converted-space">            </span>display: grid;
-<span class="Apple-converted-space">            </span>grid-template-columns: auto 1fr;
-<span class="Apple-converted-space">            </span>gap: 0.75rem; /* gap-x-3 */
-<span class="Apple-converted-space">            </span>align-items: baseline;
-<span class="Apple-converted-space">            </span>padding-top: 0.5rem; /* py-2 */
-<span class="Apple-converted-space">            </span>padding-bottom: 0.5rem; /* py-2 */
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.list-icon {
-<span class="Apple-converted-space">            </span>width: 1.5rem; /* w-6 */
-<span class="Apple-converted-space">            </span>height: 1.5rem; /* h-6 */
-<span class="Apple-converted-space">            </span>flex-shrink: 0;
-<span class="Apple-converted-space">            </span>color: #4f46e5; /* Indigo color */
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.highlight {
-<span class="Apple-converted-space">            </span>background-color: #eff6ff; /* Light blue background */
-<span class="Apple-converted-space">            </span>border-left: 4px solid #3b82f6; /* Blue left border */
-<span class="Apple-converted-space">            </span>padding: 1rem;
-<span class="Apple-converted-space">            </span>margin: 1rem 0;
-<span class="Apple-converted-space">            </span>border-radius: 0.375rem;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.legend-container {
-<span class="Apple-converted-space">            </span>max-width: 100%;
-<span class="Apple-converted-space">            </span>overflow-x: auto;
-<span class="Apple-converted-space">            </span>padding: 1rem;
-<span class="Apple-converted-space">            </span>background-color: #f9fafb; /* Very light gray */
-<span class="Apple-converted-space">            </span>border-radius: 0.5rem;
-<span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb;
-<span class="Apple-converted-space">            </span>margin-top: 1rem;
-<span class="Apple-converted-space">            </span>margin-bottom: 1rem;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.legend-node {
-<span class="Apple-converted-space">            </span>display: flex;
-<span class="Apple-converted-space">            </span>align-items: center;
-<span class="Apple-converted-space">            </span>padding: 0.75rem 1rem;
-<span class="Apple-converted-space">            </span>border-radius: 0.375rem;
-<span class="Apple-converted-space">            </span>border: 1px solid;
-<span class="Apple-converted-space">            </span>margin: 0.5rem;
-<span class="Apple-converted-space">            </span>min-width: 150px;
-<span class="Apple-converted-space">            </span>text-align: center;
-<span class="Apple-converted-space">            </span>box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-<span class="Apple-converted-space">            </span>font-size: 0.875rem;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.legend-node i, .legend-node .material-icons {
-<span class="Apple-converted-space">            </span>margin-right: 0.5rem;
-<span class="Apple-converted-space">            </span>font-size: 1.1rem;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>.legend-arrow {
-<span class="Apple-converted-space">            </span>font-size: 1.5rem;
-<span class="Apple-converted-space">            </span>color: #6b7280; /* Gray */
-<span class="Apple-converted-space">            </span>margin: 0 0.5rem;
-<span class="Apple-converted-space">            </span>align-self: center;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">        </span>/* Shapes */
-<span class="Apple-converted-space">        </span>.shape-rect { border-radius: 0.375rem; } /* Default */
-<span class="Apple-converted-space">        </span>.shape-oval { border-radius: 9999px; }
-<span class="Apple-converted-space">        </span>.shape-diamond { transform: rotate(45deg); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
-<span class="Apple-converted-space">        </span>.shape-diamond span { transform: rotate(-45deg); display: block; max-width: 100%;}
-<span class="Apple-converted-space">        </span>.shape-hexagon {
-<span class="Apple-converted-space">             </span>clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-<span class="Apple-converted-space">             </span>padding: 1rem 1.5rem; /* Adjust padding for hexagon shape */
-<span class="Apple-converted-space">        </span>}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术论文报告：迷走神经、沙门氏菌、焦虑与GABA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc; /* Lighter gray background */
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+        }
+        h2 {
+            border-bottom: 2px solid #3b82f6; /* Blue border */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem; /* Larger heading */
+            color: #1e3a8a; /* Darker blue */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb; /* Subtle border */
+        }
+        .list-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.75rem; /* gap-x-3 */
+            align-items: baseline;
+            padding-top: 0.5rem; /* py-2 */
+            padding-bottom: 0.5rem; /* py-2 */
+        }
+        .list-icon {
+            width: 1.5rem; /* w-6 */
+            height: 1.5rem; /* h-6 */
+            flex-shrink: 0;
+            color: #4f46e5; /* Indigo color */
+        }
+        .highlight {
+            background-color: #eff6ff; /* Light blue background */
+            border-left: 4px solid #3b82f6; /* Blue left border */
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+        }
+        .legend-container {
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 1rem;
+            background-color: #f9fafb; /* Very light gray */
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .legend-node {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            border: 1px solid;
+            margin: 0.5rem;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            font-size: 0.875rem;
+        }
+        .legend-node i, .legend-node .material-icons {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .legend-arrow {
+            font-size: 1.5rem;
+            color: #6b7280; /* Gray */
+            margin: 0 0.5rem;
+            align-self: center;
+        }
+        /* Shapes */
+        .shape-rect { border-radius: 0.375rem; } /* Default */
+        .shape-oval { border-radius: 9999px; }
+        .shape-diamond { transform: rotate(45deg); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+        .shape-diamond span { transform: rotate(-45deg); display: block; max-width: 100%;}
+        .shape-hexagon {
+             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+             padding: 1rem 1.5rem; /* Adjust padding for hexagon shape */
+        }
 
+        /* Colors */
+        .node-blue { background-color: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+        .node-red { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+        .node-green { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+        .node-purple { background-color: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
+        .node-orange { background-color: #ffedd5; border-color: #fed7aa; color: #9a3412; }
+        .node-gray { background-color: #f3f4f6; border-color: #d1d5db; color: #374151; }
 
-<span class="Apple-converted-space">        </span>/* Colors */
-<span class="Apple-converted-space">        </span>.node-blue { background-color: #dbeafe; border-color: #93c5fd; color: #1e40af; }
-<span class="Apple-converted-space">        </span>.node-red { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-<span class="Apple-converted-space">        </span>.node-green { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-<span class="Apple-converted-space">        </span>.node-purple { background-color: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
-<span class="Apple-converted-space">        </span>.node-orange { background-color: #ffedd5; border-color: #fed7aa; color: #9a3412; }
-<span class="Apple-converted-space">        </span>.node-gray { background-color: #f3f4f6; border-color: #d1d5db; color: #374151; }
-
-
-<span class="Apple-converted-space">        </span>.footer-card {
-<span class="Apple-converted-space">             </span>background-color: #ffffff;
-<span class="Apple-converted-space">            </span>border-radius: 0.75rem;
-<span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-<span class="Apple-converted-space">            </span>padding: 1rem;
-<span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb;
-<span class="Apple-converted-space">        </span>}
-<span class="Apple-converted-space">    </span></style>
+        .footer-card {
+             background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-<span class="Apple-converted-space">    </span><div class="max-w-6xl mx-auto p-4 sm:p-8">
+    <div class="max-w-6xl mx-auto p-4 sm:p-8">
 
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-2">迷走神经切断术通过微生物群来源的GABA减轻沙门氏菌诱导的肠道感染及焦虑样行为</h1>
+            <h2 class="text-xl md:text-2xl text-gray-600 mb-4 border-b-0 pb-0">Alleviating Effect of Vagus Nerve Cutting in Salmonella-Induced Gut Infections and Anxiety-Like Behavior via Microbiota-Derived GABA</h2>
+            <p class="text-gray-700 mb-2"><strong>Authors:</strong> Qianhui Zou, Shiyao Han, Jiarui Liang, Qianxu Wang, Yajie Wang, Zilong Zhang, Jun Hu, Jufang Li, Tian Yuan, Zhigang Liu*</p>
+            <div class="text-sm text-gray-600 mb-4">
+                <p class="font-semibold mb-1">作者单位:</p>
+                <ul class="list-none p-0">
+                    <li>1: 西北农林科技大学食品科学与工程学院，食品功能化学与营养实验室，陕西杨凌</li>
+                    <li>2: 西北农林科技大学兽医学院，干细胞与抗感染药物分子生物学实验室，陕西杨凌</li>
+                    <li>3: 青岛农业大学食品科学与工程学院，山东青岛</li>
+                    <li>4: 北京大学深圳医院神经内科，广东深圳</li>
+                    <li>5: 黑龙江飞鹤乳业有限公司，北京</li>
+                    <li>6: 西北农林科技大学深圳研究院，广东深圳</li>
+                    <li>7: 西北农林科技大学化学与药学院，陕西省天然产物与化学生物学重点实验室，陕西杨凌</li>
+                    <li>8: 陕西精准营养与健康研究院，陕西西安</li>
+                </ul>
+            </div>
+            <p class="text-sm text-gray-500 italic">发表信息: Brain, Behavior, and Immunity (2024年4月在线发表). PubMed ID: 38663772. 本报告基于其早期手稿版本进行分析。</p>
+             <p class="text-xs text-red-600 mt-2">*通讯作者</p>
+        </header>
 
-<span class="Apple-converted-space">        </span><header class="mb-8 text-center">
-<span class="Apple-converted-space">            </span><h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-2">迷走神经切断术通过微生物群来源的GABA减轻沙门氏菌诱导的肠道感染及焦虑样行为</h1>
-<span class="Apple-converted-space">            </span><h2 class="text-xl md:text-2xl text-gray-600 mb-4 border-b-0 pb-0">Alleviating Effect of Vagus Nerve Cutting in Salmonella-Induced Gut Infections and Anxiety-Like Behavior via Microbiota-Derived GABA</h2>
-<span class="Apple-converted-space">            </span><p class="text-gray-700 mb-2"><strong>Authors:</strong> Qianhui Zou, Shiyao Han, Jiarui Liang, Qianxu Wang, Yajie Wang, Zilong Zhang, Jun Hu, Jufang Li, Tian Yuan, Zhigang Liu*</p>
-<span class="Apple-converted-space">            </span><div class="text-sm text-gray-600 mb-4">
-<span class="Apple-converted-space">                </span><p class="font-semibold mb-1">作者单位:</p>
-<span class="Apple-converted-space">                </span><ul class="list-none p-0">
-<span class="Apple-converted-space">                    </span><li>1: 西北农林科技大学食品科学与工程学院，食品功能化学与营养实验室，陕西杨凌</li>
-<span class="Apple-converted-space">                    </span><li>2: 西北农林科技大学兽医学院，干细胞与抗感染药物分子生物学实验室，陕西杨凌</li>
-<span class="Apple-converted-space">                    </span><li>3: 青岛农业大学食品科学与工程学院，山东青岛</li>
-<span class="Apple-converted-space">                    </span><li>4: 北京大学深圳医院神经内科，广东深圳</li>
-<span class="Apple-converted-space">                    </span><li>5: 黑龙江飞鹤乳业有限公司，北京</li>
-<span class="Apple-converted-space">                    </span><li>6: 西北农林科技大学深圳研究院，广东深圳</li>
-<span class="Apple-converted-space">                    </span><li>7: 西北农林科技大学化学与药学院，陕西省天然产物与化学生物学重点实验室，陕西杨凌</li>
-<span class="Apple-converted-space">                    </span><li>8: 陕西精准营养与健康研究院，陕西西安</li>
-<span class="Apple-converted-space">                </span></ul>
-<span class="Apple-converted-space">            </span></div>
-<span class="Apple-converted-space">            </span><p class="text-sm text-gray-500 italic">发表信息: Brain, Behavior, and Immunity (2024年4月在线发表). PubMed ID: 38663772. 本报告基于其早期手稿版本进行分析。</p>
-<span class="Apple-converted-space">             </span><p class="text-xs text-red-600 mt-2">*通讯作者</p>
-<span class="Apple-converted-space">        </span></header>
+        <main>
 
+            <section class="card">
+                <h2><i class="material-icons text-blue-600 mr-2 align-bottom">info</i>研究背景</h2>
+                <p class="mb-3">沙门氏菌（Salmonella）是引发食源性胃肠道感染的主要病原体之一，常导致急性腹泻、肠道炎症，并可能引发全身性感染。除了消化道症状，越来越多的研究表明，肠道感染，特别是沙门氏菌感染，与焦虑、抑郁等情绪障碍和认知功能缺陷有关。这种联系凸显了“肠-脑轴”（Gut-Brain Axis）的重要性，即肠道和大脑之间复杂的双向通讯系统。</p>
+                <p class="mb-3">迷走神经（Vagus Nerve）作为肠-脑轴的关键物理连接，传递来自肠道的多种信号（如激素、神经递质、炎症信号）到大脑，同时也向肠道传递信号调节肠道功能和免疫反应。肠道微生物群及其产生的代谢物（如γ-氨基丁酸，GABA）在调节宿主免疫、维持肠道屏障完整性和影响神经功能方面也发挥着至关重要的作用。沙门氏菌感染会破坏肠道微生物稳态，可能影响GABA等关键代谢物的水平。</p>
+                <div class="highlight">
+                  <p><strong>核心问题：</strong>沙门氏菌感染引发焦虑样行为的具体机制尚不完全清楚，特别是迷走神经和肠道微生物（尤其是GABA）在其中扮演的角色有待阐明。</p>
+                </div>
+            </section>
 
-<span class="Apple-converted-space">        </span><main>
+            <section class="card">
+                 <h2><i class="material-icons text-blue-600 mr-2 align-bottom">track_changes</i>研究目的与假设</h2>
+                 <p>本研究旨在探讨迷走神经和肠道神经递质（特别是GABA）在调节鼠伤寒沙门氏菌（*S. typhimurium*）诱导的全身感染、神经炎症反应和焦虑样行为中的作用。</p>
+                 <p class="mt-2"><strong>主要假设：</strong>切断迷走神经（迷走神经切断术，Vagotomy）能够通过影响肠道微生物群及其代谢产物（如GABA），减轻沙门氏菌感染引起的肠道炎症和相关的焦虑样行为改变。</p>
+            </section>
 
+             <section class="card">
+                <h2><i class="material-icons text-blue-600 mr-2 align-bottom">science</i>研究思路与方法</h2>
+                <p class="mb-4">本研究采用小鼠模型，通过外科手术（迷走神经切断术）和药物干预（GABA补充），结合行为学测试、分子生物学、组织病理学、微生物组学和代谢组学等方法，系统地探究了迷走神经和GABA在沙门氏菌感染中的作用。</p>
 
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">info</i>研究背景</h2>
-<span class="Apple-converted-space">                </span><p class="mb-3">沙门氏菌（Salmonella）是引发食源性胃肠道感染的主要病原体之一，常导致急性腹泻、肠道炎症，并可能引发全身性感染。除了消化道症状，越来越多的研究表明，肠道感染，特别是沙门氏菌感染，与焦虑、抑郁等情绪障碍和认知功能缺陷有关。这种联系凸显了“肠-脑轴”（Gut-Brain Axis）的重要性，即肠道和大脑之间复杂的双向通讯系统。</p>
-<span class="Apple-converted-space">                </span><p class="mb-3">迷走神经（Vagus Nerve）作为肠-脑轴的关键物理连接，传递来自肠道的多种信号（如激素、神经递质、炎症信号）到大脑，同时也向肠道传递信号调节肠道功能和免疫反应。肠道微生物群及其产生的代谢物（如γ-氨基丁酸，GABA）在调节宿主免疫、维持肠道屏障完整性和影响神经功能方面也发挥着至关重要的作用。沙门氏菌感染会破坏肠道微生物稳态，可能影响GABA等关键代谢物的水平。</p>
-<span class="Apple-converted-space">                </span><div class="highlight">
-<span class="Apple-converted-space">                  </span><p><strong>核心问题：</strong>沙门氏菌感染引发焦虑样行为的具体机制尚不完全清楚，特别是迷走神经和肠道微生物（尤其是GABA）在其中扮演的角色有待阐明。</p>
-<span class="Apple-converted-space">                </span></div>
-<span class="Apple-converted-space">            </span></section>
+                <h3 class="text-lg font-semibold mb-2 text-gray-700">主要实验设计:</h3>
+                <ul class="list-disc list-inside space-y-1 mb-4">
+                    <li><strong>实验一：</strong>比较四组C57BL/6J雄性小鼠：假手术组（Sham）、假手术+沙门氏菌感染组（Sham+S.typhimurium）、迷走神经切断组（Vagotomy）、迷走神经切断+沙门氏菌感染组（Vagotomy+S.typhimurium）。</li>
+                    <li><strong>实验二：</strong>比较两组小鼠：沙门氏菌感染组（S.typhimurium）、沙门氏菌感染+GABA预处理组（S.typhimurium+GABA）。</li>
+                </ul>
 
+                 <h3 class="text-lg font-semibold mb-2 text-gray-700">关键技术与指标:</h3>
+                 <ul class="list-disc list-inside space-y-1 mb-4">
+                     <li><strong>迷走神经切断术:</strong> 单侧颈部迷走神经切断。</li>
+                     <li><strong>沙门氏菌感染:</strong> 经口灌胃给予1x10⁹ CFU的*S. typhimurium* SL1344。</li>
+                     <li><strong>行为学评估:</strong> 旷场实验（Open Field Test, OFT）、埋珠实验（Marble Burying Test, MBT）评估焦虑样行为。</li>
+                     <li><strong>感染与炎症指标:</strong> 体重变化、脾脏指数、脾脏沙门氏菌载量、血清脂多糖（LPS）水平、肠道组织H&E染色、Alcian Blue染色（杯状细胞）、肠道和大脑相关细胞因子（TNF-α, IL-1β, IL-6, IL-10, IL-22, CXCL1）mRNA表达（RT-PCR）。</li>
+                     <li><strong>神经炎症与活动:</strong> 大脑（海马、杏仁核、皮层）小胶质细胞活化（IBA-1免疫荧光）、神经元活化（c-Fos免疫荧光）。</li>
+                     <li><strong>肠道神经递质:</strong> 结肠内容物中GABA、组胺、谷氨酸、色氨酸、N-乙酰血清素水平（LC-MS/MS）。</li>
+                     <li><strong>肠道微生物组:</strong> 粪便样本16S rRNA测序分析α/β多样性、菌群组成。</li>
+                </ul>
 
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                 </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">track_changes</i>研究目的与假设</h2>
-<span class="Apple-converted-space">                 </span><p>本研究旨在探讨迷走神经和肠道神经递质（特别是GABA）在调节鼠伤寒沙门氏菌（*S. typhimurium*）诱导的全身感染、神经炎症反应和焦虑样行为中的作用。</p>
-<span class="Apple-converted-space">                 </span><p class="mt-2"><strong>主要假设：</strong>切断迷走神经（迷走神经切断术，Vagotomy）能够通过影响肠道微生物群及其代谢产物（如GABA），减轻沙门氏菌感染引起的肠道炎症和相关的焦虑样行为改变。</p>
-<span class="Apple-converted-space">            </span></section>
+                <h3 class="text-lg font-semibold mb-2 text-gray-700">AI生成图例：研究方法流程</h3>
+                <div class="legend-container">
+                    <div class="flex flex-wrap justify-center items-center">
+                        <div class="legend-node node-blue shape-rect">
+                            <i class="fas fa-mouse"></i><span>小鼠模型 (C57BL/6J)</span>
+                        </div>
+                        <span class="legend-arrow">→</span>
+                        <div class="legend-node node-purple shape-rect">
+                            <i class="fas fa-scissors"></i><span>干预 (假手术 / 迷走神经切断 / GABA预处理)</span>
+                        </div>
+                         <span class="legend-arrow">→</span>
+                         <div class="legend-node node-red shape-rect">
+                            <i class="fas fa-bacteria"></i><span>沙门氏菌感染</span>
+                        </div>
+                         <span class="legend-arrow">→</span>
+                         <div class="legend-node node-green shape-rect">
+                            <i class="fas fa-tasks"></i><span>多维度评估</span>
+                        </div>
+                    </div>
+                     <div class="flex flex-wrap justify-center items-start mt-4 space-x-2">
+                         <div class="legend-node node-gray shape-rect text-xs p-2">
+                            <i class="fas fa-weight-scale"></i><span>全身指标 (体重, 脾脏, LPS)</span>
+                         </div>
+                         <div class="legend-node node-gray shape-rect text-xs p-2">
+                            <i class="fas fa-person-running"></i><span>行为学 (OFT, MBT)</span>
+                         </div>
+                         <div class="legend-node node-gray shape-rect text-xs p-2">
+                            <i class="fas fa-vials"></i><span>组织病理 (H&E, Alcian Blue)</span>
+                         </div>
+                         <div class="legend-node node-gray shape-rect text-xs p-2">
+                             <i class="fas fa-dna"></i><span>分子生物 (RT-PCR)</span>
+                         </div>
+                         <div class="legend-node node-gray shape-rect text-xs p-2">
+                             <i class="fas fa-brain"></i><span>神经科学 (IBA-1, c-Fos)</span>
+                         </div>
+                          <div class="legend-node node-gray shape-rect text-xs p-2">
+                             <i class="fas fa-atom"></i><span>代谢组学 (LC-MS/MS)</span>
+                         </div>
+                          <div class="legend-node node-gray shape-rect text-xs p-2">
+                             <i class="fas fa-bugs"></i><span>微生物组 (16S rRNA)</span>
+                         </div>
+                    </div>
+                </div>
+            </section>
 
+            <section class="card">
+                <h2><i class="material-icons text-blue-600 mr-2 align-bottom">assessment</i>关键结果</h2>
+                <p class="mb-4">研究结果清晰地揭示了迷走神经切断术和GABA干预对沙门氏菌感染引起的一系列病理生理和行为改变具有显著的缓解作用。</p>
 
-<span class="Apple-converted-space">             </span><section class="card">
-<span class="Apple-converted-space">                </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">science</i>研究思路与方法</h2>
-<span class="Apple-converted-space">                </span><p class="mb-4">本研究采用小鼠模型，通过外科手术（迷走神经切断术）和药物干预（GABA补充），结合行为学测试、分子生物学、组织病理学、微生物组学和代谢组学等方法，系统地探究了迷走神经和GABA在沙门氏菌感染中的作用。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-indigo-700">迷走神经切断术 (Vagotomy) 的影响:</h3>
+                        <ul class="space-y-1">
+                           <li class="list-item">
+                               <span class="material-icons list-icon">healing</span>
+                               <span><strong>减轻全身感染：</strong>显著减轻了感染引起的体重下降、脾脏肿大、脾内沙门氏菌负荷及血清LPS水平升高。</span>
+                           </li>
+                           <li class="list-item">
+                                <span class="material-icons list-icon">psychology</span>
+                               <span><strong>缓解焦虑样行为：</strong>改善了旷场实验中的探索行为（中央区域活动增加），并减少了埋珠行为。</span>
+                           </li>
+                           <li class="list-item">
+                               <span class="material-icons list-icon">local_hospital</span>
+                               <span><strong>抑制肠道炎症：</strong>减轻了空肠和结肠的组织损伤（炎症细胞浸润、绒毛/隐窝破坏减少），保护了杯状细胞，并下调了促炎因子（TNF-α, IL-1β, IL-6, IL-10）表达，同时恢复了抗感染因子（IL-22, CXCL1）水平。</span>
+                           </li>
+                            <li class="list-item">
+                               <span class="material-icons list-icon">neurology</span>
+                               <span><strong>降低神经炎症：</strong>减少了海马和杏仁核中的小胶质细胞活化（IBA-1），并降低了海马和皮层的促炎因子（IL-6, IL-1β, TNF-α, IL-10）水平。</span>
+                           </li>
+                           <li class="list-item">
+                               <span class="material-icons list-icon">electrical_services</span>
+                               <span><strong>阻断神经信号：</strong>降低了感染诱导的孤束核（NTS）和杏仁核中c-Fos（神经元活化标记物）的表达。</span>
+                           </li>
+                            <li class="list-item">
+                               <span class="material-icons list-icon">mediation</span>
+                               <span><strong>调节肠道神经递质：</strong>逆转了感染导致的结肠GABA、色氨酸和N-乙酰血清素水平下降。感染引起的谷氨酸和组胺水平升高则不受迷走神经切断术影响。</span>
+                           </li>
+                            <li class="list-item">
+                               <span class="material-icons list-icon">bug_report</span>
+                               <span><strong>改善肠道菌群失调：</strong>阻止了感染引起的菌群α多样性下降，显著改变了菌群结构，减少了致病菌（如沙门氏菌、梭菌属）丰度，增加了有益菌/GABA产生菌（如*Alistipes*, *Bacteroides*, *Lactobacillus*）的丰度。</span>
+                           </li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-lg font-semibold mb-2 text-green-700">GABA 预处理的影响:</h3>
+                         <ul class="space-y-1">
+                            <li class="list-item">
+                               <span class="material-icons list-icon text-green-600">health_and_safety</span>
+                               <span><strong>减轻全身感染与焦虑：</strong>同样能减轻体重下降，降低血清LPS和脾脏细菌载量，并减少焦虑样行为。</span>
+                            </li>
+                            <li class="list-item">
+                               <span class="material-icons list-icon text-green-600">coronavirus</span>
+                               <span><strong>抑制肠道和大脑炎症：</strong>减少了肠道组织损伤，保护了杯状细胞，降低了结肠和海马的促炎因子表达，并上调了结肠抗感染因子。</span>
+                            </li>
+                         </ul>
+                        <h3 class="text-lg font-semibold mt-6 mb-2 text-purple-700">相关性分析:</h3>
+                         <ul class="space-y-1">
+                            <li class="list-item">
+                               <span class="material-icons list-icon text-purple-600">link</span>
+                               <span>沙门氏菌丰度与感染指标（脾指数、LPS）呈<strong class="text-red-600">正相关</strong>，与体重、探索行为、结肠GABA水平、*Alistipes*丰度呈<strong class="text-blue-600">负相关</strong>。</span>
+                            </li>
+                             <li class="list-item">
+                               <span class="material-icons list-icon text-purple-600">hub</span>
+                               <span>探索行为与有益菌（*Alistipes*, *Lactobacillus*）丰度呈<strong class="text-red-600">正相关</strong>，与沙门氏菌丰度、组胺水平、LPS水平呈<strong class="text-blue-600">负相关</strong>。</span>
+                            </li>
+                         </ul>
+                    </div>
+                </div>
 
+                <h3 class="text-lg font-semibold mt-6 mb-2 text-gray-700">AI生成图例：关键结果逻辑关系</h3>
+                <div class="legend-container">
+                   <div class="relative p-4 min-h-[450px] flex flex-col items-center">
+                       <div class="legend-node node-red shape-hexagon mb-8 z-10">
+                            <i class="fas fa-viruses"></i><span class="font-bold">沙门氏菌感染</span>
+                        </div>
 
-<span class="Apple-converted-space">                </span><h3 class="text-lg font-semibold mb-2 text-gray-700">主要实验设计:</h3>
-<span class="Apple-converted-space">                </span><ul class="list-disc list-inside space-y-1 mb-4">
-<span class="Apple-converted-space">                    </span><li><strong>实验一：</strong>比较四组C57BL/6J雄性小鼠：假手术组（Sham）、假手术+沙门氏菌感染组（Sham+S.typhimurium）、迷走神经切断组（Vagotomy）、迷走神经切断+沙门氏菌感染组（Vagotomy+S.typhimurium）。</li>
-<span class="Apple-converted-space">                    </span><li><strong>实验二：</strong>比较两组小鼠：沙门氏菌感染组（S.typhimurium）、沙门氏菌感染+GABA预处理组（S.typhimurium+GABA）。</li>
-<span class="Apple-converted-space">                </span></ul>
+                       <div class="absolute top-24 left-0 right-0 flex justify-around items-start flex-wrap">
+                           <div class="flex flex-col items-center mx-2 mb-4">
+                                <div class="legend-node node-red shape-rect">
+                                    <i class="fas fa-fire"></i><span>肠道/全身炎症 & 感染</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">↓</span>
+                                <div class="legend-node node-green shape-rect">
+                                    <i class="fas fa-pills"></i><span>GABA <br/>干预</span>
+                                </div>
+                           </div>
 
+                           <div class="flex flex-col items-center mx-2 mb-4">
+                                <div class="legend-node node-red shape-rect">
+                                    <i class="fas fa-bugs"></i><span>菌群失调↓<br/>GABA产生菌↓</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">→</span>
+                                <div class="legend-node node-orange shape-rect">
+                                    <i class="fas fa-atom"></i><span>结肠GABA↓</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">↑</span>
+                                <div class="legend-node node-blue shape-rect">
+                                     <i class="fas fa-scissors"></i><span>迷走神经<br/>切断术</span>
+                                </div>
+                            </div>
 
-<span class="Apple-converted-space">                 </span><h3 class="text-lg font-semibold mb-2 text-gray-700">关键技术与指标:</h3>
-<span class="Apple-converted-space">                 </span><ul class="list-disc list-inside space-y-1 mb-4">
-<span class="Apple-converted-space">                     </span><li><strong>迷走神经切断术:</strong> 单侧颈部迷走神经切断。</li>
-<span class="Apple-converted-space">                     </span><li><strong>沙门氏菌感染:</strong> 经口灌胃给予1x10⁹ CFU的*S. typhimurium* SL1344。</li>
-<span class="Apple-converted-space">                     </span><li><strong>行为学评估:</strong> 旷场实验（Open Field Test, OFT）、埋珠实验（Marble Burying Test, MBT）评估焦虑样行为。</li>
-<span class="Apple-converted-space">                     </span><li><strong>感染与炎症指标:</strong> 体重变化、脾脏指数、脾脏沙门氏菌载量、血清脂多糖（LPS）水平、肠道组织H&E染色、Alcian Blue染色（杯状细胞）、肠道和大脑相关细胞因子（TNF-α, IL-1β, IL-6, IL-10, IL-22, CXCL1）mRNA表达（RT-PCR）。</li>
-<span class="Apple-converted-space">                     </span><li><strong>神经炎症与活动:</strong> 大脑（海马、杏仁核、皮层）小胶质细胞活化（IBA-1免疫荧光）、神经元活化（c-Fos免疫荧光）。</li>
-<span class="Apple-converted-space">                     </span><li><strong>肠道神经递质:</strong> 结肠内容物中GABA、组胺、谷氨酸、色氨酸、N-乙酰血清素水平（LC-MS/MS）。</li>
-<span class="Apple-converted-space">                     </span><li><strong>肠道微生物组:</strong> 粪便样本16S rRNA测序分析α/β多样性、菌群组成。</li>
-<span class="Apple-converted-space">                </span></ul>
+                            <div class="flex flex-col items-center mx-2 mb-4">
+                                <div class="legend-node node-purple shape-oval">
+                                    <i class="fas fa-wave-square"></i><span>迷走神经<br/>激活↑</span>
+                                </div>
+                                 <span class="text-2xl text-gray-500 my-1">→</span>
+                                 <div class="legend-node node-purple shape-oval">
+                                    <i class="fas fa-brain"></i><span>NTS/杏仁核<br/>激活↑</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">→</span>
+                                <div class="legend-node node-purple shape-oval">
+                                    <i class="fas fa-brain"></i><span>神经炎症↑</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">↓</span>
+                                 <div class="legend-node node-blue shape-rect">
+                                     <i class="fas fa-ban"></i><span>迷走神经<br/>切断术 (阻断)</span>
+                                </div>
+                                 <span class="text-2xl text-gray-500 my-1">↓</span>
+                                  <div class="legend-node node-green shape-rect">
+                                    <i class="fas fa-pills"></i><span>GABA <br/>干预</span>
+                                </div>
+                             </div>
 
+                            <div class="flex flex-col items-center mx-2 mb-4">
+                               <div class="legend-node node-purple shape-oval">
+                                    <i class="fas fa-face-frown"></i><span>焦虑样行为↑</span>
+                                </div>
+                                <span class="text-2xl text-gray-500 my-1">↓</span>
+                                 <div class="legend-node node-blue shape-rect">
+                                     <i class="fas fa-scissors"></i><span>迷走神经<br/>切断术</span>
+                                </div>
+                                 <span class="text-2xl text-gray-500 my-1">↓</span>
+                                  <div class="legend-node node-green shape-rect">
+                                    <i class="fas fa-pills"></i><span>GABA <br/>干预</span>
+                                </div>
+                            </div>
+                       </div>
+                       </div>
+                </div>
 
-<span class="Apple-converted-space">                </span><h3 class="text-lg font-semibold mb-2 text-gray-700">AI生成图例：研究方法流程</h3>
-<span class="Apple-converted-space">                </span><div class="legend-container">
-<span class="Apple-converted-space">                    </span><div class="flex flex-wrap justify-center items-center">
-<span class="Apple-converted-space">                        </span><div class="legend-node node-blue shape-rect">
-<span class="Apple-converted-space">                            </span><i class="fas fa-mouse"></i><span>小鼠模型 (C57BL/6J)</span>
-<span class="Apple-converted-space">                        </span></div>
-<span class="Apple-converted-space">                        </span><span class="legend-arrow">→</span>
-<span class="Apple-converted-space">                        </span><div class="legend-node node-purple shape-rect">
-<span class="Apple-converted-space">                            </span><i class="fas fa-scissors"></i><span>干预 (假手术 / 迷走神经切断 / GABA预处理)</span>
-<span class="Apple-converted-space">                        </span></div>
-<span class="Apple-converted-space">                         </span><span class="legend-arrow">→</span>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-red shape-rect">
-<span class="Apple-converted-space">                            </span><i class="fas fa-bacteria"></i><span>沙门氏菌感染</span>
-<span class="Apple-converted-space">                        </span></div>
-<span class="Apple-converted-space">                         </span><span class="legend-arrow">→</span>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-green shape-rect">
-<span class="Apple-converted-space">                            </span><i class="fas fa-tasks"></i><span>多维度评估</span>
-<span class="Apple-converted-space">                        </span></div>
-<span class="Apple-converted-space">                    </span></div>
-<span class="Apple-converted-space">                     </span><div class="flex flex-wrap justify-center items-start mt-4 space-x-2">
-<span class="Apple-converted-space">                         </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                            </span><i class="fas fa-weight-scale"></i><span>全身指标 (体重, 脾脏, LPS)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                            </span><i class="fas fa-person-running"></i><span>行为学 (OFT, MBT)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                            </span><i class="fas fa-vials"></i><span>组织病理 (H&E, Alcian Blue)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                             </span><i class="fas fa-dna"></i><span>分子生物 (RT-PCR)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                         </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                             </span><i class="fas fa-brain"></i><span>神经科学 (IBA-1, c-Fos)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                          </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                             </span><i class="fas fa-atom"></i><span>代谢组学 (LC-MS/MS)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                          </span><div class="legend-node node-gray shape-rect text-xs p-2">
-<span class="Apple-converted-space">                             </span><i class="fas fa-bugs"></i><span>微生物组 (16S rRNA)</span>
-<span class="Apple-converted-space">                         </span></div>
-<span class="Apple-converted-space">                    </span></div>
-<span class="Apple-converted-space">                </span></div>
-<span class="Apple-converted-space">            </span></section>
+            </section>
 
+            <section class="card">
+                 <h2><i class="material-icons text-blue-600 mr-2 align-bottom">lightbulb</i>创新点</h2>
+                 <ul class="space-y-2">
+                    <li class="list-item">
+                        <span class="material-icons list-icon">hub</span>
+                        <span><strong>首次明确迷走神经关键作用：</strong>清晰证明了迷走神经是沙门氏菌感染诱导焦虑样行为的关键通路，切断该通路可有效缓解行为异常。</span>
+                    </li>
+                     <li class="list-item">
+                        <span class="material-icons list-icon">mediation</span>
+                        <span><strong>连接神经、微生物与代谢：</strong>将迷走神经切断术带来的行为和炎症改善，与结肠内GABA水平的恢复以及GABA产生菌的丰度变化直接联系起来，揭示了“神经-微生物-代谢物”的相互作用。</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="material-icons list-icon">biotech</span>
+                        <span><strong>验证GABA治疗潜力：</strong>通过直接补充GABA，证实了其在抵抗沙门氏菌感染及其相关并发症（肠道炎症、神经炎症、焦虑行为）方面的治疗潜力。</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="material-icons list-icon">insights</span>
+                        <span><strong>揭示复杂互作机制：</strong>强调了在细菌感染背景下，迷走神经、肠道菌群（特别是GABA生产者）、神经递质和宿主免疫/行为反应之间的复杂动态平衡。</span>
+                    </li>
+                 </ul>
+            </section>
 
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">assessment</i>关键结果</h2>
-<span class="Apple-converted-space">                </span><p class="mb-4">研究结果清晰地揭示了迷走神经切断术和GABA干预对沙门氏菌感染引起的一系列病理生理和行为改变具有显著的缓解作用。</p>
+            <section class="card">
+                 <h2><i class="material-icons text-blue-600 mr-2 align-bottom">speaker_notes</i>讨论与结论</h2>
+                 <p class="mb-3">本研究证实，沙门氏菌感染可通过激活迷走神经通路，引起宿主中枢神经系统的激活（NTS、杏仁核）和局部炎症（海马、杏仁核），最终导致焦虑样行为。迷走神经似乎是传递肠道感染“警报”信号至大脑的关键途径，可能感知肠道释放的炎症因子（如IL-1β, TNF-α）或神经递质（如谷氨酸，组胺）的变化。</p>
+                 <p class="mb-3">迷走神经切断术不仅阻断了这种自下而上的致焦虑信号，还显著改善了肠道微环境。它抑制了肠道炎症，并重塑了肠道菌群结构，特别是增加了产生GABA的有益菌丰度，恢复了结肠GABA水平。这表明迷走神经信号通路可能参与调节肠道菌群稳态，或者感染诱导的焦虑状态本身会破坏菌群稳态，而切断迷走神经缓解了焦虑，间接保护了菌群。</p>
+                 <p class="mb-3">GABA补充实验进一步证实了其保护作用。口服GABA能有效减轻沙门氏菌引起的全身感染、肠道和大脑炎症以及焦虑样行为，这与迷走神经切断术的效果高度相似。GABA可能通过抑制炎症反应、保护肠道屏障和直接的神经调节作用来发挥其抗感染和抗焦虑效果。</p>
+                  <div class="highlight bg-green-100 border-green-500">
+                    <p><strong>结论：</strong>迷走神经在沙门氏菌感染引起的肠-脑通讯和焦虑行为中扮演核心角色。干预迷走神经通路或补充其下游关键调节因子GABA，均能有效缓解感染带来的多系统损害。靶向“迷走神经-肠道菌群-GABA”轴可能为治疗细菌感染及其相关的神经精神并发症提供新的策略。</p>
+                 </div>
+            </section>
 
+            <section class="card">
+                 <h2><i class="material-icons text-blue-600 mr-2 align-bottom">report_problem</i>局限性</h2>
+                  <ul class="list-disc list-inside space-y-1">
+                     <li>迷走神经切断术影响肠道菌群的具体机制（是直接影响肠道环境还是通过中枢信号改变）仍需深入研究。</li>
+                     <li>沙门氏菌激活迷走神经的确切分子机制（是LPS、细胞因子、代谢物还是直接作用于神经末梢）有待进一步通过体外共培养等方法探明。</li>
+                     <li>沙门氏菌诱导焦虑所涉及的详细中枢神经环路图谱需要利用更先进的神经示踪和调控技术进行解析。</li>
+                     <li>GABA发挥抗感染作用的具体途径（是直接抑制细菌还是调节宿主免疫/屏障功能）需要进一步区分。</li>
+                  </ul>
+            </section>
 
-<span class="Apple-converted-space">                </span><div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<span class="Apple-converted-space">                    </span><div>
-<span class="Apple-converted-space">                        </span><h3 class="text-lg font-semibold mb-2 text-indigo-700">迷走神经切断术 (Vagotomy) 的影响:</h3>
-<span class="Apple-converted-space">                        </span><ul class="space-y-1">
-<span class="Apple-converted-space">                           </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">healing</span>
-<span class="Apple-converted-space">                               </span><span><strong>减轻全身感染：</strong>显著减轻了感染引起的体重下降、脾脏肿大、脾内沙门氏菌负荷及血清LPS水平升高。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                           </span><li class="list-item">
-<span class="Apple-converted-space">                                </span><span class="material-icons list-icon">psychology</span>
-<span class="Apple-converted-space">                               </span><span><strong>缓解焦虑样行为：</strong>改善了旷场实验中的探索行为（中央区域活动增加），并减少了埋珠行为。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                           </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">local_hospital</span>
-<span class="Apple-converted-space">                               </span><span><strong>抑制肠道炎症：</strong>减轻了空肠和结肠的组织损伤（炎症细胞浸润、绒毛/隐窝破坏减少），保护了杯状细胞，并下调了促炎因子（TNF-α, IL-1β, IL-6, IL-10）表达，同时恢复了抗感染因子（IL-22, CXCL1）水平。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">neurology</span>
-<span class="Apple-converted-space">                               </span><span><strong>降低神经炎症：</strong>减少了海马和杏仁核中的小胶质细胞活化（IBA-1），并降低了海马和皮层的促炎因子（IL-6, IL-1β, TNF-α, IL-10）水平。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                           </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">electrical_services</span>
-<span class="Apple-converted-space">                               </span><span><strong>阻断神经信号：</strong>降低了感染诱导的孤束核（NTS）和杏仁核中c-Fos（神经元活化标记物）的表达。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">mediation</span>
-<span class="Apple-converted-space">                               </span><span><strong>调节肠道神经递质：</strong>逆转了感染导致的结肠GABA、色氨酸和N-乙酰血清素水平下降。感染引起的谷氨酸和组胺水平升高则不受迷走神经切断术影响。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon">bug_report</span>
-<span class="Apple-converted-space">                               </span><span><strong>改善肠道菌群失调：</strong>阻止了感染引起的菌群α多样性下降，显著改变了菌群结构，减少了致病菌（如沙门氏菌、梭菌属）丰度，增加了有益菌/GABA产生菌（如*Alistipes*, *Bacteroides*, *Lactobacillus*）的丰度。</span>
-<span class="Apple-converted-space">                           </span></li>
-<span class="Apple-converted-space">                        </span></ul>
-<span class="Apple-converted-space">                    </span></div>
-<span class="Apple-converted-space">                     </span><div>
-<span class="Apple-converted-space">                        </span><h3 class="text-lg font-semibold mb-2 text-green-700">GABA 预处理的影响:</h3>
-<span class="Apple-converted-space">                         </span><ul class="space-y-1">
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon text-green-600">health_and_safety</span>
-<span class="Apple-converted-space">                               </span><span><strong>减轻全身感染与焦虑：</strong>同样能减轻体重下降，降低血清LPS和脾脏细菌载量，并减少焦虑样行为。</span>
-<span class="Apple-converted-space">                            </span></li>
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon text-green-600">coronavirus</span>
-<span class="Apple-converted-space">                               </span><span><strong>抑制肠道和大脑炎症：</strong>减少了肠道组织损伤，保护了杯状细胞，降低了结肠和海马的促炎因子表达，并上调了结肠抗感染因子。</span>
-<span class="Apple-converted-space">                            </span></li>
-<span class="Apple-converted-space">                         </span></ul>
-<span class="Apple-converted-space">                        </span><h3 class="text-lg font-semibold mt-6 mb-2 text-purple-700">相关性分析:</h3>
-<span class="Apple-converted-space">                         </span><ul class="space-y-1">
-<span class="Apple-converted-space">                            </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon text-purple-600">link</span>
-<span class="Apple-converted-space">                               </span><span>沙门氏菌丰度与感染指标（脾指数、LPS）呈<strong class="text-red-600">正相关</strong>，与体重、探索行为、结肠GABA水平、*Alistipes*丰度呈<strong class="text-blue-600">负相关</strong>。</span>
-<span class="Apple-converted-space">                            </span></li>
-<span class="Apple-converted-space">                             </span><li class="list-item">
-<span class="Apple-converted-space">                               </span><span class="material-icons list-icon text-purple-600">hub</span>
-<span class="Apple-converted-space">                               </span><span>探索行为与有益菌（*Alistipes*, *Lactobacillus*）丰度呈<strong class="text-red-600">正相关</strong>，与沙门氏菌丰度、组胺水平、LPS水平呈<strong class="text-blue-600">负相关</strong>。</span>
-<span class="Apple-converted-space">                            </span></li>
-<span class="Apple-converted-space">                         </span></ul>
-<span class="Apple-converted-space">                    </span></div>
-<span class="Apple-converted-space">                </span></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                 <div class="footer-card">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">person</i>通讯作者简介</h3>
+                    <p class="text-sm"><strong>刘志刚 (Zhigang Liu) 教授</strong></p>
+                    <p class="text-sm text-gray-600 mb-1">西北农林科技大学食品科学与工程学院</p>
+                    <p class="text-xs text-gray-500">研究方向主要集中在营养干预对大脑衰老和神经退行性疾病（如阿尔茨海默病）的影响，特别是肠-脑轴、能量代谢与大脑突触可塑性之间的联系。曾访问美国康奈尔大学、南加州大学，并获德国洪堡基金会资助。</p>
+                    <p class="text-xs text-gray-500 mt-2">邮箱: zhigangliu@nwsuaf.edu.cn</p>
+                </div>
 
+                 <div class="footer-card">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">visibility</i>深度未来展望</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-600">
+                        <li><strong>机制探索：</strong>深入研究迷走神经切断术改变肠道微环境（免疫、运动、分泌）的具体机制及其对菌群的影响；利用共培养和基因编辑技术探究沙门氏菌与迷走神经的直接互作分子。</li>
+                        <li><strong>治疗转化：</strong>探索非侵入性迷走神经刺激（nVNS）联合GABA能干预（如特定益生菌、益生元）作为治疗感染后肠-脑轴功能紊乱（如IBS、焦虑）的协同策略。</li>
+                        <li><strong>神经环路：</strong>利用光遗传/化学遗传学和病毒示踪技术绘制从NTS/杏仁核下游介导感染相关焦虑行为的具体神经通路。</li>
+                        <li><strong>代谢物功能：</strong>表征受迷走神经调控的其他关键肠道代谢物（如SCFA），并研究其在感染和行为中的作用；探究GABA抗感染作用是直接抑菌还是调节宿主。</li>
+                        <li><strong>宿主-病原互作：</strong>研究沙门氏菌是否主动抑制肠道GABA产生以利于自身定植或免疫逃逸。</li>
+                    </ul>
+                </div>
 
-<span class="Apple-converted-space">                </span><h3 class="text-lg font-semibold mt-6 mb-2 text-gray-700">AI生成图例：关键结果逻辑关系</h3>
-<span class="Apple-converted-space">                </span><div class="legend-container">
-<span class="Apple-converted-space">                   </span><div class="relative p-4 min-h-[450px] flex flex-col items-center">
-<span class="Apple-converted-space">                       </span><div class="legend-node node-red shape-hexagon mb-8 z-10">
-<span class="Apple-converted-space">                            </span><i class="fas fa-viruses"></i><span class="font-bold">沙门氏菌感染</span>
-<span class="Apple-converted-space">                        </span></div>
+                <div class="footer-card">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">link</i>相关在线资源</h3>
+                     <ul class="list-disc list-inside text-sm space-y-1 text-blue-600 hover:text-blue-800">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38663772/" target="_blank" rel="noopener noreferrer">本文PubMed链接</a></li>
+                        <li><a href="https://www.frontiersin.org/articles/10.3389/fnins.2018.00049/full" target="_blank" rel="noopener noreferrer">综述：迷走神经在微生物-肠-脑轴界面的作用 (Frontiers)</a></li>
+                         <li><a href="https://www.mdpi.com/2072-6643/17/6/933" target="_blank" rel="noopener noreferrer">综述：肠道菌群对焦虑症状发展的影响 (MDPI)</a></li>
+                         <li><a href="https://journals.physiology.org/doi/full/10.1152/physrev.00018.2018" target="_blank" rel="noopener noreferrer">综述：微生物群-肠-脑轴 (Physiological Reviews)</a></li>
+                          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11410766/" target="_blank" rel="noopener noreferrer">研究：肠道菌群干预增加肠道GABA并缓解焦虑行为 (PMC)</a></li>
+                    </ul>
+                </div>
+            </div>
 
+            <section class="card">
+                <h2><i class="material-icons text-blue-600 mr-2 align-bottom">menu_book</i>参考文献</h2>
+                <p class="text-sm text-gray-600 mb-2">本报告内容主要基于以下文献（PDF原文及其引用文献）：</p>
+                <ul class="list-disc list-inside text-xs space-y-1 text-gray-500 overflow-y-auto max-h-48">
+                    <li>Zou, Q., Han, S., Liang, J., Wang, Q., Wang, Y., Zhang, Z., Hu, J., Li, J., Yuan, T., & Liu, Z. (2024). Alleviating effect of vagus nerve cutting in Salmonella-induced gut infections and anxiety-like behavior via enhancing microbiota-derived GABA. Brain, Behavior, and Immunity, 119, 106-119. doi: 10.1016/j.bbi.2024.04.019 (PubMed ID: 38663772)</li>
+                     <li>Agustí, A., et al. (2018). Interplay Between the Gut-Brain Axis, Obesity and Cognitive Function. Front. Neurosci.</li>
+                    <li>Ahmer, B.M., & Gunn, J.S. (2011). Interaction of Salmonella spp. with the Intestinal Microbiota. Front. Microbiol.</li>
+                    <li>Bonaz, B., et al. (2018). The Vagus Nerve at the Interface of the Microbiota-Gut-Brain Axis. Front. Neurosci.</li>
+                    <li>Fu, J., et al. (2022). GABA regulates IL-1β production in macrophages. Cell Rep.</li>
+                    <li>Goehler, L.E., et al. (2008). Campylobacter jejuni infection increases anxiety-like behavior... Brain Behav. Immun.</li>
+                    <li>Han, W., et al. (2018). A Neural Circuit for Gut-Induced Reward. Cell.</li>
+                    <li>Kaelberer, M.M., et al. (2018). A gut-brain neural circuit for nutrient sensory transduction. Science.</li>
+                    <li>Kurtz, J.R., et al. (2017). Salmonella infection: Interplay between the bacteria and host immune system. Immunol. Lett.</li>
+                    <li>Madison, A., & Kiecolt-Glaser, J.K. (2019). Stress, depression, diet, and the gut microbiota... Curr. Opin. Behav. Sci.</li>
+                    <li>Mittal, R., et al. (2017). Neurotransmitters: The Critical Modulators Regulating Gut-Brain Axis. J. Cell. Physiol.</li>
+                     <li>Siopi, E., et al. (2023). Gut microbiota changes require vagus nerve integrity to promote depressive-like behaviors in mice. Mol. Psychiatr.</li>
+                     <li>Strandwitz, P., et al. (2019). GABA-modulating bacteria of the human gut microbiota. Nat. Microbiol.</li>
+                     <li>Wang, X., et al. (2002). Evidences for vagus nerve in maintenance of immune balance... World J. Gastroenterol.</li>
+                     <li>Wu, Y., et al. (2022). Lactobacillus plantarum-derived postbiotics prevent Salmonella-induced neurological dysfunctions... Front. Nutr.</li>
+                    </ul>
+                 <p class="text-xs text-gray-500 mt-2"><strong>强制引用声明:</strong> 本报告内容完全基于用户上传的PDF文件 "BBI-S-23-02243.pdf" 及其后续发表版本 (PMID: 38663772) 以及用于补充背景信息和作者信息的公开网络资源进行分析和生成。所有核心发现和结论均来源于原始文献。</p>
+            </section>
 
-<span class="Apple-converted-space">                       </span><div class="absolute top-24 left-0 right-0 flex justify-around items-start flex-wrap">
-<span class="Apple-converted-space">                           </span><div class="flex flex-col items-center mx-2 mb-4">
-<span class="Apple-converted-space">                                </span><div class="legend-node node-red shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-fire"></i><span>肠道/全身炎症 & 感染</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">↓</span>
-<span class="Apple-converted-space">                                </span><div class="legend-node node-green shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-pills"></i><span>GABA <br/>干预</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                           </span></div>
+        </main>
 
-
-<span class="Apple-converted-space">                           </span><div class="flex flex-col items-center mx-2 mb-4">
-<span class="Apple-converted-space">                                </span><div class="legend-node node-red shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-bugs"></i><span>菌群失调↓<br/>GABA产生菌↓</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">→</span>
-<span class="Apple-converted-space">                                </span><div class="legend-node node-orange shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-atom"></i><span>结肠GABA↓</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">↑</span>
-<span class="Apple-converted-space">                                </span><div class="legend-node node-blue shape-rect">
-<span class="Apple-converted-space">                                     </span><i class="fas fa-scissors"></i><span>迷走神经<br/>切断术</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                            </span></div>
-
-
-<span class="Apple-converted-space">                            </span><div class="flex flex-col items-center mx-2 mb-4">
-<span class="Apple-converted-space">                                </span><div class="legend-node node-purple shape-oval">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-wave-square"></i><span>迷走神经<br/>激活↑</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                 </span><span class="text-2xl text-gray-500 my-1">→</span>
-<span class="Apple-converted-space">                                 </span><div class="legend-node node-purple shape-oval">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-brain"></i><span>NTS/杏仁核<br/>激活↑</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">→</span>
-<span class="Apple-converted-space">                                </span><div class="legend-node node-purple shape-oval">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-brain"></i><span>神经炎症↑</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">↓</span>
-<span class="Apple-converted-space">                                 </span><div class="legend-node node-blue shape-rect">
-<span class="Apple-converted-space">                                     </span><i class="fas fa-ban"></i><span>迷走神经<br/>切断术 (阻断)</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                 </span><span class="text-2xl text-gray-500 my-1">↓</span>
-<span class="Apple-converted-space">                                  </span><div class="legend-node node-green shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-pills"></i><span>GABA <br/>干预</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                             </span></div>
-
-
-<span class="Apple-converted-space">                            </span><div class="flex flex-col items-center mx-2 mb-4">
-<span class="Apple-converted-space">                               </span><div class="legend-node node-purple shape-oval">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-face-frown"></i><span>焦虑样行为↑</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                </span><span class="text-2xl text-gray-500 my-1">↓</span>
-<span class="Apple-converted-space">                                 </span><div class="legend-node node-blue shape-rect">
-<span class="Apple-converted-space">                                     </span><i class="fas fa-scissors"></i><span>迷走神经<br/>切断术</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                                 </span><span class="text-2xl text-gray-500 my-1">↓</span>
-<span class="Apple-converted-space">                                  </span><div class="legend-node node-green shape-rect">
-<span class="Apple-converted-space">                                    </span><i class="fas fa-pills"></i><span>GABA <br/>干预</span>
-<span class="Apple-converted-space">                                </span></div>
-<span class="Apple-converted-space">                            </span></div>
-<span class="Apple-converted-space">                       </span></div>
-<span class="Apple-converted-space">                       </span></div>
-<span class="Apple-converted-space">                </span></div>
-
-
-<span class="Apple-converted-space">            </span></section>
-
-
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                 </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">lightbulb</i>创新点</h2>
-<span class="Apple-converted-space">                 </span><ul class="space-y-2">
-<span class="Apple-converted-space">                    </span><li class="list-item">
-<span class="Apple-converted-space">                        </span><span class="material-icons list-icon">hub</span>
-<span class="Apple-converted-space">                        </span><span><strong>首次明确迷走神经关键作用：</strong>清晰证明了迷走神经是沙门氏菌感染诱导焦虑样行为的关键通路，切断该通路可有效缓解行为异常。</span>
-<span class="Apple-converted-space">                    </span></li>
-<span class="Apple-converted-space">                     </span><li class="list-item">
-<span class="Apple-converted-space">                        </span><span class="material-icons list-icon">mediation</span>
-<span class="Apple-converted-space">                        </span><span><strong>连接神经、微生物与代谢：</strong>将迷走神经切断术带来的行为和炎症改善，与结肠内GABA水平的恢复以及GABA产生菌的丰度变化直接联系起来，揭示了“神经-微生物-代谢物”的相互作用。</span>
-<span class="Apple-converted-space">                    </span></li>
-<span class="Apple-converted-space">                    </span><li class="list-item">
-<span class="Apple-converted-space">                        </span><span class="material-icons list-icon">biotech</span>
-<span class="Apple-converted-space">                        </span><span><strong>验证GABA治疗潜力：</strong>通过直接补充GABA，证实了其在抵抗沙门氏菌感染及其相关并发症（肠道炎症、神经炎症、焦虑行为）方面的治疗潜力。</span>
-<span class="Apple-converted-space">                    </span></li>
-<span class="Apple-converted-space">                    </span><li class="list-item">
-<span class="Apple-converted-space">                        </span><span class="material-icons list-icon">insights</span>
-<span class="Apple-converted-space">                        </span><span><strong>揭示复杂互作机制：</strong>强调了在细菌感染背景下，迷走神经、肠道菌群（特别是GABA生产者）、神经递质和宿主免疫/行为反应之间的复杂动态平衡。</span>
-<span class="Apple-converted-space">                    </span></li>
-<span class="Apple-converted-space">                 </span></ul>
-<span class="Apple-converted-space">            </span></section>
-
-
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                 </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">speaker_notes</i>讨论与结论</h2>
-<span class="Apple-converted-space">                 </span><p class="mb-3">本研究证实，沙门氏菌感染可通过激活迷走神经通路，引起宿主中枢神经系统的激活（NTS、杏仁核）和局部炎症（海马、杏仁核），最终导致焦虑样行为。迷走神经似乎是传递肠道感染“警报”信号至大脑的关键途径，可能感知肠道释放的炎症因子（如IL-1β, TNF-α）或神经递质（如谷氨酸，组胺）的变化。</p>
-<span class="Apple-converted-space">                 </span><p class="mb-3">迷走神经切断术不仅阻断了这种自下而上的致焦虑信号，还显著改善了肠道微环境。它抑制了肠道炎症，并重塑了肠道菌群结构，特别是增加了产生GABA的有益菌丰度，恢复了结肠GABA水平。这表明迷走神经信号通路可能参与调节肠道菌群稳态，或者感染诱导的焦虑状态本身会破坏菌群稳态，而切断迷走神经缓解了焦虑，间接保护了菌群。</p>
-<span class="Apple-converted-space">                 </span><p class="mb-3">GABA补充实验进一步证实了其保护作用。口服GABA能有效减轻沙门氏菌引起的全身感染、肠道和大脑炎症以及焦虑样行为，这与迷走神经切断术的效果高度相似。GABA可能通过抑制炎症反应、保护肠道屏障和直接的神经调节作用来发挥其抗感染和抗焦虑效果。</p>
-<span class="Apple-converted-space">                  </span><div class="highlight bg-green-100 border-green-500">
-<span class="Apple-converted-space">                    </span><p><strong>结论：</strong>迷走神经在沙门氏菌感染引起的肠-脑通讯和焦虑行为中扮演核心角色。干预迷走神经通路或补充其下游关键调节因子GABA，均能有效缓解感染带来的多系统损害。靶向“迷走神经-肠道菌群-GABA”轴可能为治疗细菌感染及其相关的神经精神并发症提供新的策略。</p>
-<span class="Apple-converted-space">                 </span></div>
-<span class="Apple-converted-space">            </span></section>
-
-
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                 </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">report_problem</i>局限性</h2>
-<span class="Apple-converted-space">                  </span><ul class="list-disc list-inside space-y-1">
-<span class="Apple-converted-space">                     </span><li>迷走神经切断术影响肠道菌群的具体机制（是直接影响肠道环境还是通过中枢信号改变）仍需深入研究。</li>
-<span class="Apple-converted-space">                     </span><li>沙门氏菌激活迷走神经的确切分子机制（是LPS、细胞因子、代谢物还是直接作用于神经末梢）有待进一步通过体外共培养等方法探明。</li>
-<span class="Apple-converted-space">                     </span><li>沙门氏菌诱导焦虑所涉及的详细中枢神经环路图谱需要利用更先进的神经示踪和调控技术进行解析。</li>
-<span class="Apple-converted-space">                     </span><li>GABA发挥抗感染作用的具体途径（是直接抑制细菌还是调节宿主免疫/屏障功能）需要进一步区分。</li>
-<span class="Apple-converted-space">                  </span></ul>
-<span class="Apple-converted-space">            </span></section>
-
-
-<span class="Apple-converted-space">            </span><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-<span class="Apple-converted-space">                 </span><div class="footer-card">
-<span class="Apple-converted-space">                    </span><h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">person</i>通讯作者简介</h3>
-<span class="Apple-converted-space">                    </span><p class="text-sm"><strong>刘志刚 (Zhigang Liu) 教授</strong></p>
-<span class="Apple-converted-space">                    </span><p class="text-sm text-gray-600 mb-1">西北农林科技大学食品科学与工程学院</p>
-<span class="Apple-converted-space">                    </span><p class="text-xs text-gray-500">研究方向主要集中在营养干预对大脑衰老和神经退行性疾病（如阿尔茨海默病）的影响，特别是肠-脑轴、能量代谢与大脑突触可塑性之间的联系。曾访问美国康奈尔大学、南加州大学，并获德国洪堡基金会资助。</p>
-<span class="Apple-converted-space">                    </span><p class="text-xs text-gray-500 mt-2">邮箱: zhigangliu@nwsuaf.edu.cn</p>
-<span class="Apple-converted-space">                </span></div>
-
-
-<span class="Apple-converted-space">                 </span><div class="footer-card">
-<span class="Apple-converted-space">                    </span><h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">visibility</i>深度未来展望</h3>
-<span class="Apple-converted-space">                    </span><ul class="list-disc list-inside text-sm space-y-1 text-gray-600">
-<span class="Apple-converted-space">                        </span><li><strong>机制探索：</strong>深入研究迷走神经切断术改变肠道微环境（免疫、运动、分泌）的具体机制及其对菌群的影响；利用共培养和基因编辑技术探究沙门氏菌与迷走神经的直接互作分子。</li>
-<span class="Apple-converted-space">                        </span><li><strong>治疗转化：</strong>探索非侵入性迷走神经刺激（nVNS）联合GABA能干预（如特定益生菌、益生元）作为治疗感染后肠-脑轴功能紊乱（如IBS、焦虑）的协同策略。</li>
-<span class="Apple-converted-space">                        </span><li><strong>神经环路：</strong>利用光遗传/化学遗传学和病毒示踪技术绘制从NTS/杏仁核下游介导感染相关焦虑行为的具体神经通路。</li>
-<span class="Apple-converted-space">                        </span><li><strong>代谢物功能：</strong>表征受迷走神经调控的其他关键肠道代谢物（如SCFA），并研究其在感染和行为中的作用；探究GABA抗感染作用是直接抑菌还是调节宿主。</li>
-<span class="Apple-converted-space">                        </span><li><strong>宿主-病原互作：</strong>研究沙门氏菌是否主动抑制肠道GABA产生以利于自身定植或免疫逃逸。</li>
-<span class="Apple-converted-space">                    </span></ul>
-<span class="Apple-converted-space">                </span></div>
-
-
-<span class="Apple-converted-space">                </span><div class="footer-card">
-<span class="Apple-converted-space">                    </span><h3 class="text-lg font-semibold mb-2 text-gray-700"><i class="material-icons align-bottom mr-1">link</i>相关在线资源</h3>
-<span class="Apple-converted-space">                     </span><ul class="list-disc list-inside text-sm space-y-1 text-blue-600 hover:text-blue-800">
-<span class="Apple-converted-space">                        </span><li><a href="https://pubmed.ncbi.nlm.nih.gov/38663772/" target="_blank" rel="noopener noreferrer">本文PubMed链接</a></li>
-<span class="Apple-converted-space">                        </span><li><a href="https://www.frontiersin.org/articles/10.3389/fnins.2018.00049/full" target="_blank" rel="noopener noreferrer">综述：迷走神经在微生物-肠-脑轴界面的作用 (Frontiers)</a></li>
-<span class="Apple-converted-space">                         </span><li><a href="https://www.mdpi.com/2072-6643/17/6/933" target="_blank" rel="noopener noreferrer">综述：肠道菌群对焦虑症状发展的影响 (MDPI)</a></li>
-<span class="Apple-converted-space">                         </span><li><a href="https://journals.physiology.org/doi/full/10.1152/physrev.00018.2018" target="_blank" rel="noopener noreferrer">综述：微生物群-肠-脑轴 (Physiological Reviews)</a></li>
-<span class="Apple-converted-space">                          </span><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11410766/" target="_blank" rel="noopener noreferrer">研究：肠道菌群干预增加肠道GABA并缓解焦虑行为 (PMC)</a></li>
-<span class="Apple-converted-space">                    </span></ul>
-<span class="Apple-converted-space">                </span></div>
-<span class="Apple-converted-space">            </span></div>
-
-
-<span class="Apple-converted-space">            </span><section class="card">
-<span class="Apple-converted-space">                </span><h2><i class="material-icons text-blue-600 mr-2 align-bottom">menu_book</i>参考文献</h2>
-<span class="Apple-converted-space">                </span><p class="text-sm text-gray-600 mb-2">本报告内容主要基于以下文献（PDF原文及其引用文献）：</p>
-<span class="Apple-converted-space">                </span><ul class="list-disc list-inside text-xs space-y-1 text-gray-500 overflow-y-auto max-h-48">
-<span class="Apple-converted-space">                    </span><li>Zou, Q., Han, S., Liang, J., Wang, Q., Wang, Y., Zhang, Z., Hu, J., Li, J., Yuan, T., & Liu, Z. (2024). Alleviating effect of vagus nerve cutting in Salmonella-induced gut infections and anxiety-like behavior via enhancing microbiota-derived GABA. Brain, Behavior, and Immunity, 119, 106-119. doi: 10.1016/j.bbi.2024.04.019 (PubMed ID: 38663772)</li>
-<span class="Apple-converted-space">                     </span><li>Agustí, A., et al. (2018). Interplay Between the Gut-Brain Axis, Obesity and Cognitive Function. Front. Neurosci.</li>
-<span class="Apple-converted-space">                    </span><li>Ahmer, B.M., & Gunn, J.S. (2011). Interaction of Salmonella spp. with the Intestinal Microbiota. Front. Microbiol.</li>
-<span class="Apple-converted-space">                    </span><li>Bonaz, B., et al. (2018). The Vagus Nerve at the Interface of the Microbiota-Gut-Brain Axis. Front. Neurosci.</li>
-<span class="Apple-converted-space">                    </span><li>Fu, J., et al. (2022). GABA regulates IL-1β production in macrophages. Cell Rep.</li>
-<span class="Apple-converted-space">                    </span><li>Goehler, L.E., et al. (2008). Campylobacter jejuni infection increases anxiety-like behavior... Brain Behav. Immun.</li>
-<span class="Apple-converted-space">                    </span><li>Han, W., et al. (2018). A Neural Circuit for Gut-Induced Reward. Cell.</li>
-<span class="Apple-converted-space">                    </span><li>Kaelberer, M.M., et al. (2018). A gut-brain neural circuit for nutrient sensory transduction. Science.</li>
-<span class="Apple-converted-space">                    </span><li>Kurtz, J.R., et al. (2017). Salmonella infection: Interplay between the bacteria and host immune system. Immunol. Lett.</li>
-<span class="Apple-converted-space">                    </span><li>Madison, A., & Kiecolt-Glaser, J.K. (2019). Stress, depression, diet, and the gut microbiota... Curr. Opin. Behav. Sci.</li>
-<span class="Apple-converted-space">                    </span><li>Mittal, R., et al. (2017). Neurotransmitters: The Critical Modulators Regulating Gut-Brain Axis. J. Cell. Physiol.</li>
-<span class="Apple-converted-space">                     </span><li>Siopi, E., et al. (2023). Gut microbiota changes require vagus nerve integrity to promote depressive-like behaviors in mice. Mol. Psychiatr.</li>
-<span class="Apple-converted-space">                     </span><li>Strandwitz, P., et al. (2019). GABA-modulating bacteria of the human gut microbiota. Nat. Microbiol.</li>
-<span class="Apple-converted-space">                     </span><li>Wang, X., et al. (2002). Evidences for vagus nerve in maintenance of immune balance... World J. Gastroenterol.</li>
-<span class="Apple-converted-space">                     </span><li>Wu, Y., et al. (2022). Lactobacillus plantarum-derived postbiotics prevent Salmonella-induced neurological dysfunctions... Front. Nutr.</li>
-<span class="Apple-converted-space">                    </span></ul>
-<span class="Apple-converted-space">                 </span><p class="text-xs text-gray-500 mt-2"><strong>强制引用声明:</strong> 本报告内容完全基于用户上传的PDF文件 "BBI-S-23-02243.pdf" 及其后续发表版本 (PMID: 38663772) 以及用于补充背景信息和作者信息的公开网络资源进行分析和生成。所有核心发现和结论均来源于原始文献。</p>
-<span class="Apple-converted-space">            </span></section>
-
-
-<span class="Apple-converted-space">        </span></main>
-
-
-<span class="Apple-converted-space">    </span></div>
+    </div>
 </body>
 </html>
